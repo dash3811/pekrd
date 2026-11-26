@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en" data-base="/">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Request a Quote | Peak Events by KRD</title>
+<meta name="description" content="Request a custom event rental quote from Peak Events by KRD in Austin, Texas.">
+<link rel="canonical" href="https://peakeventsbykrd.com/quote/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Request a Quote | Peak Events by KRD">
+<meta property="og:description" content="Request a custom event rental quote from Peak Events by KRD in Austin, Texas.">
+<meta property="og:image" content="https://peakeventsbykrd.com/assets/img/events/candlelit-hall.webp">
+<meta property="og:url" content="https://peakeventsbykrd.com/quote/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#F6F1EA">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap">
+<link rel="stylesheet" href="/assets/css/site.css?v=1">
+<script defer data-domain="peakeventsbykrd.com" src="https://plausible.io/js/script.js"></script>
+
+</head>
+<body class="page-quote">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="Peak Events by KRD home"><svg class="" viewBox="0 0 120 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+  <path d="M34 12 V112 M24 112 H44 M24 12 H34"/>
+  <path d="M34 12 H60 C80 12 90 24 90 38 C90 54 78 64 60 64 H34"/>
+  <path d="M58 56 V148 M48 148 H58 M48 56 H58"/>
+  <path d="M58 56 H100 V66 M58 100 H92 M58 148 H104 V136"/>
+</svg><span class="brand-name">Peak Events<small>by KRD</small></span></a>
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/rentals/">Rentals</a>
+      <a href="/real-events/">Real Events</a>
+      <a href="/custom-builds/">Custom Builds</a>
+      <a href="/how-it-works/">How It Works</a>
+      <a href="/about/">About</a>
+    </nav>
+    <div class="header-actions">
+      <a class="quote-bag" href="/quote/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 8h14l-1.2 12H6.2z"/><path d="M9 8a3 3 0 016 0"/></svg><span class="label">Quote</span><span class="quote-count is-empty" aria-label="items in quote">0</span></a>
+      <button class="menu-btn" type="button" aria-controls="nav" aria-expanded="false" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap page-head">
+  <span class="script script-reveal">Your Quote</span>
+  <h1 data-reveal>Request a quote</h1>
+  <p class="lede" data-reveal>Review your list, tell us about your event, and we'll reply with availability and a tailored quote.</p>
+</div>
+<section class="wrap quote-layout" data-quote-page>
+  <div>
+    <h2 style="font-size:30px">Your list</h2>
+    <div class="empty" hidden><p class="lede" style="margin:0 auto 18px">Your quote list is empty.</p><a class="btn" href="/rentals/">Browse rentals</a></div>
+    <ul class="qlist"></ul>
+    <p class="note" style="margin-top:16px">Not sure about quantities? Give us your best guess and we'll help you plan.</p>
+  </div>
+  <form class="form" name="quote" method="POST" data-netlify="true" netlify-honeypot="bot-field" data-endpoint="" data-email="kailee@peakeventsbykrd.com" novalidate>
+    <input type="hidden" name="form-name" value="quote">
+    <p class="hp"><label>Leave this empty <input name="bot-field"></label></p>
+    <textarea id="q-items" name="items" hidden></textarea>
+    <h2 style="font-size:30px">Event details</h2>
+    <div class="row2">
+      <div class="field"><label for="q-name">Your name</label><input id="q-name" name="name" autocomplete="name" required></div>
+      <div class="field"><label for="q-email">Email</label><input id="q-email" name="email" type="email" autocomplete="email" required></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="q-phone">Phone</label><input id="q-phone" name="phone" type="tel" autocomplete="tel"></div>
+      <div class="field"><label for="q-date">Event date</label><input id="q-date" name="date" type="date" min="2026-11-26" required></div>
+    </div>
+    <div class="row2">
+      <div class="field"><label for="q-venue">Venue or address</label><input id="q-venue" name="venue" required></div>
+      <div class="field"><label for="q-guests">Guest count</label><input id="q-guests" name="guests" type="number" min="1" inputmode="numeric"></div>
+    </div>
+    <div class="field"><label for="q-type">Event type</label><select id="q-type" name="type"><option>Wedding</option><option>Rehearsal dinner</option><option>Shower or party</option><option>Corporate event</option><option>Other</option></select></div>
+    <div class="field"><label for="q-msg">Tell us about your vision</label><textarea id="q-msg" name="message" placeholder="Colors, mood, timing, anything you're dreaming up"></textarea></div>
+    <p class="note">All orders are delivered and picked up by our team.</p>
+    <button class="btn btn--terra" type="submit" style="width:100%">Send my quote request</button>
+    <div class="form-msg" role="status"></div>
+  </form>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-cta">
+      <h2>Let's set a beautiful table.</h2>
+      <a class="btn btn--light" href="/quote/">Start a quote</a>
+    </div>
+    <div class="foot-grid">
+      <div class="foot-brand"><svg class="" viewBox="0 0 120 160" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+  <path d="M34 12 V112 M24 112 H44 M24 12 H34"/>
+  <path d="M34 12 H60 C80 12 90 24 90 38 C90 54 78 64 60 64 H34"/>
+  <path d="M58 56 V148 M48 148 H58 M48 56 H58"/>
+  <path d="M58 56 H100 V66 M58 100 H92 M58 148 H104 V136"/>
+</svg><p>Design-led event rentals for weddings and celebrations in Austin, Texas and beyond.</p></div>
+      <div><h4>Rentals</h4><ul><li><a href="/rentals/chairs/">Chairs</a></li><li><a href="/rentals/tables/">Tables</a></li><li><a href="/rentals/lighting/">Lighting &amp; Chandeliers</a></li><li><a href="/rentals/facades/">Facades &amp; Bars</a></li><li><a href="/rentals/staging/">Staging &amp; Dance Floors</a></li><li><a href="/rentals/essentials/">Essentials</a></li></ul></div>
+      <div><h4>Explore</h4><ul>
+        <li><a href="/real-events/">Real Events</a></li><li><a href="/custom-builds/">Custom Builds</a></li><li><a href="/how-it-works/">How It Works</a></li><li><a href="/about/">About</a></li>
+        <li><a href="https://lookbook.peakeventsbykrd.com/" target="_blank" rel="noopener">2025/26 Lookbook (PDF)</a></li></ul></div>
+      <div><h4>Say hello</h4><ul>
+        <li><a href="mailto:kailee@peakeventsbykrd.com">kailee@peakeventsbykrd.com</a></li>
+        <li><a href="tel:+13253566341">325.356.6341</a></li>
+        <li><a href="https://instagram.com/peakeventsbykrd" target="_blank" rel="noopener">@peakeventsbykrd</a></li></ul></div>
+    </div>
+    <div class="foot-legal"><span>© 2026 Peak Events by KRD. All rights reserved.</span><span><a href="/privacy/">Privacy</a> · <a href="/terms/">Terms</a></span></div>
+  </div>
+</footer>
+<div class="quote-bar" aria-hidden="false"><span class="quote-bar-count">0 items in your quote</span><a class="btn btn--light btn--sm" href="/quote/">Review quote</a></div>
+<div id="live" class="sr-only" aria-live="polite"></div>
+<script src="/assets/js/site.js?v=1" defer></script>
+</body>
+</html>
