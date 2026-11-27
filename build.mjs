@@ -9,6 +9,10 @@ const ROOT = dirname(fileURLToPath(import.meta.url));
 const OUT = join(ROOT, 'dist');
 const VERSION = '2';
 // BASE_PATH lets the site live in a sub-folder, e.g. BASE_PATH=/pekrd/ for github.io/pekrd. Default is the domain root.
+// Preview mode: SITE_URL points canonical/OG links at the preview host; NOINDEX=1 hides it from search engines and skips analytics.
+const PREVIEW = process.env.NOINDEX === '1';
+if (process.env.SITE_URL) site.url = process.env.SITE_URL.replace(/\/+$/, '');
+if (PREVIEW) site.plausibleDomain = '';
 const BASE = ('/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
 
 const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -42,7 +46,7 @@ function head({ title, description, path, image, jsonld }) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(full)}</title>
-<meta name="description" content="${esc(desc)}">
+<meta name="description" content="${esc(desc)}">${PREVIEW ? '\n<meta name="robots" content="noindex, nofollow">' : ''}
 <link rel="canonical" href="${site.url}${path}">
 <meta property="og:type" content="website">
 <meta property="og:title" content="${esc(full)}">
@@ -544,7 +548,7 @@ function legal() {
 function extras() {
   const urls = ['/', '/rentals/', ...categories.map((c) => `/rentals/${c.slug}/`), ...items.map(itemUrl), '/real-events/', '/custom-builds/', '/how-it-works/', '/about/', '/quote/', '/privacy/', '/terms/'];
   writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map((u) => `  <url><loc>${site.url}${u}</loc></url>`).join('\n')}\n</urlset>\n`);
-  writeFileSync(join(OUT, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
+  writeFileSync(join(OUT, 'robots.txt'), PREVIEW ? 'User-agent: *\nDisallow: /\n' : `User-agent: *\nAllow: /\nSitemap: ${site.url}/sitemap.xml\n`);
   writeFileSync(join(ROOT, 'assets/img/favicon.svg'), `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#D0B89C"/><g transform="translate(13 6) scale(.32)" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"><path d="M34 12 V112 M34 12 H60 C80 12 90 24 90 38 C90 54 78 64 60 64 H34"/><path d="M58 56 V148 M58 56 H100 M58 100 H92 M58 148 H104"/></g></svg>`);
 }
 

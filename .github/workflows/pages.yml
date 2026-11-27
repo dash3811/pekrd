@@ -31,6 +31,9 @@ jobs:
       - run: node build.mjs
         env:
           BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # Preview on Greg's domain. When the site moves to peakeventsbykrd.com, delete the next two lines.
+          SITE_URL: https://krd.gregoryrainesllc.com
+          NOINDEX: '1'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist
