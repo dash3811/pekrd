@@ -323,10 +323,6 @@
     document.documentElement.classList.toggle('shield-on', on);
     if (on && ms) shieldTimer = setTimeout(function () { shield(false); }, ms);
   }
-  // Blur photos while the window isn't focused (deters snipping tools that take focus)
-  window.addEventListener('blur', function () { shield(true); });
-  window.addEventListener('focus', function () { shield(false); });
-  document.addEventListener('visibilitychange', function () { shield(document.hidden); });
 
   renderCount(false);
 })();

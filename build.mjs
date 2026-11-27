@@ -7,7 +7,7 @@ import { site, categories, items, looks, testimonials } from './src/data.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const OUT = join(ROOT, 'dist');
-const VERSION = '2';
+const VERSION = '3';
 // BASE_PATH lets the site live in a sub-folder, e.g. BASE_PATH=/pekrd/ for github.io/pekrd. Default is the domain root.
 // Preview mode: SITE_URL points canonical/OG links at the preview host; NOINDEX=1 hides it from search engines and skips analytics.
 const PREVIEW = process.env.NOINDEX === '1';
