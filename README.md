@@ -18,6 +18,12 @@ Design-led event rental site for Peak Events by KRD (Austin, Texas). It's a stat
 
 Or connect this GitHub repo in Netlify. `netlify.toml` already sets the publish folder to `dist`.
 
+**GitHub Pages (free, publishes on every push):** set up in `.github/workflows/pages.yml`.
+1. In the repo on GitHub, open Settings → Pages and set Source to **GitHub Actions** (one-time).
+2. Re-run the latest "Publish to GitHub Pages" run under the Actions tab, or push any change. The site appears at `https://dash3811.github.io/pekrd/`.
+3. Custom domain: in Settings → Pages → Custom domain, enter `peakeventsbykrd.com` and add the DNS records GitHub shows (four A records for the root domain, or a CNAME for `www` pointing to `dash3811.github.io`). Tick "Enforce HTTPS" once it's available. Links adjust automatically.
+4. GitHub Pages can't receive form submissions, so set `formEndpoint` to a Formspree, Basin or Getform URL for the quote form.
+
 **Vercel:** import this repo. `vercel.json` sets the output to `dist`. On Vercel the Netlify form won't work, so set `formEndpoint` (see below).
 
 **Any other host (Squarespace-free hosting, cPanel, S3, etc.):** upload the contents of `dist/` to the web root and set `formEndpoint`.

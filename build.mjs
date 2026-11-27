@@ -8,6 +8,8 @@ import { site, categories, items, looks, testimonials } from './src/data.mjs';
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const OUT = join(ROOT, 'dist');
 const VERSION = '1';
+// BASE_PATH lets the site live in a sub-folder, e.g. BASE_PATH=/pekrd/ for github.io/pekrd. Default is the domain root.
+const BASE = ('/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
 
 const esc = (s = '') => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const P = (n) => `/assets/img/products/${n}.webp`;
@@ -124,6 +126,8 @@ ${footer()}`;
 function write(path, html) {
   const file = join(OUT, path, path.endsWith('.html') ? '' : 'index.html');
   mkdirSync(dirname(file), { recursive: true });
+  // Point root-relative links (href="/…", src="/…", data-img="/…") at BASE
+  if (BASE !== '/') html = html.replace(/(=")\/(?!\/)/g, '$1' + BASE);
   writeFileSync(file, html);
 }
 
