@@ -428,3 +428,20 @@ p { margin: 0 0 1em; }
   .intro { display: none !important; }
   @view-transition { navigation: none; }
 }
+
+/* ---------- Content protection (deterrent) ---------- */
+body { -webkit-user-select: none; user-select: none; }
+input, textarea, select, [contenteditable], .allow-select, a[href^="mailto:"], a[href^="tel:"] { -webkit-user-select: text; user-select: text; }
+img { -webkit-user-drag: none; user-drag: none; -webkit-touch-callout: none; }
+/* Faint tiled watermark over event photography */
+.hero-media::before, .collage a::before, .look button, .product-scene, .portrait, .insta a { position: relative; }
+.collage a::after, .look button::after, .product-scene::after, .portrait::after, .insta a::after, .lightbox .wm, .hero-media::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='160'%3E%3Ctext x='130' y='86' fill='%23ffffff' fill-opacity='.2' font-family='Georgia,serif' font-size='15' text-anchor='middle' transform='rotate(-24 130 80)'%3E%C2%A9 Peak Events by KRD%3C/text%3E%3C/svg%3E") repeat;
+}
+.lightbox .wm { position: fixed; }
+.shield-on main img, .shield-on .hero-media { filter: blur(22px); transition: filter .15s; }
+@media print {
+  body * { visibility: hidden !important; }
+  body::before { visibility: visible; content: "This page is protected. Please visit peakeventsbykrd.com or email us for photos and details."; display: block; padding: 40px; font: 18px Georgia, serif; }
+}

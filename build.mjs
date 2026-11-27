@@ -7,7 +7,7 @@ import { site, categories, items, looks, testimonials } from './src/data.mjs';
 
 const ROOT = dirname(fileURLToPath(import.meta.url));
 const OUT = join(ROOT, 'dist');
-const VERSION = '1';
+const VERSION = '2';
 // BASE_PATH lets the site live in a sub-folder, e.g. BASE_PATH=/pekrd/ for github.io/pekrd. Default is the domain root.
 const BASE = ('/' + (process.env.BASE_PATH || '').replace(/^\/+|\/+$/g, '') + '/').replace('//', '/');
 

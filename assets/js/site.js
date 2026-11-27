@@ -216,7 +216,7 @@
     if (!t) return;
     var lb = doc.createElement('div');
     lb.className = 'lightbox'; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', t.dataset.title);
-    lb.innerHTML = '<img src="' + t.dataset.lightbox + '" alt=""><p></p><button type="button" aria-label="Close">×</button>';
+    lb.innerHTML = '<img src="' + t.dataset.lightbox + '" alt=""><span class="wm" aria-hidden="true"></span><p></p><button type="button" aria-label="Close">×</button>';
     lb.querySelector('img').alt = t.dataset.title; lb.querySelector('p').textContent = t.dataset.title;
     doc.body.appendChild(lb);
     var close = function () { lb.classList.remove('is-open'); setTimeout(function () { lb.remove(); t.focus(); }, 250); doc.removeEventListener('keydown', esc); };
@@ -305,6 +305,28 @@
       req.then(function (r) { done(r.ok); }).catch(function () { done(false); });
     });
   }
+
+  /* ---------- Content protection (deterrent only; a browser can't fully block copying or screenshots) ---------- */
+  var editable = function (el) { return el && el.closest && el.closest('input, textarea, select, [contenteditable], .allow-select'); };
+  document.addEventListener('contextmenu', function (e) { if (!editable(e.target)) e.preventDefault(); });
+  document.addEventListener('dragstart', function (e) { if (e.target.tagName === 'IMG' || e.target.tagName === 'A') e.preventDefault(); });
+  document.addEventListener('copy', function (e) { if (!editable(e.target)) { e.preventDefault(); if (e.clipboardData) e.clipboardData.setData('text/plain', '© ' + document.title + ' | peakeventsbykrd.com'); } });
+  document.addEventListener('keydown', function (e) {
+    var k = (e.key || '').toLowerCase(), mod = e.ctrlKey || e.metaKey;
+    if ((mod && ['s', 'u', 'p'].indexOf(k) > -1) || (mod && e.shiftKey && ['i', 'j', 'c'].indexOf(k) > -1) || k === 'f12') { e.preventDefault(); }
+    if (k === 'printscreen') shield(true, 1500);
+  });
+  document.addEventListener('keyup', function (e) { if ((e.key || '').toLowerCase() === 'printscreen') { shield(true, 1500); if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText('').catch(function () {}); } });
+  var shieldTimer;
+  function shield(on, ms) {
+    clearTimeout(shieldTimer);
+    document.documentElement.classList.toggle('shield-on', on);
+    if (on && ms) shieldTimer = setTimeout(function () { shield(false); }, ms);
+  }
+  // Blur photos while the window isn't focused (deters snipping tools that take focus)
+  window.addEventListener('blur', function () { shield(true); });
+  window.addEventListener('focus', function () { shield(false); });
+  document.addEventListener('visibilitychange', function () { shield(document.hidden); });
 
   renderCount(false);
 })();
