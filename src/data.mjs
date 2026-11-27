@@ -10,7 +10,7 @@ export const site = {
   tagline: 'Rentals with a point of view',
   description:
     'Peak Events by KRD is an Austin, Texas event rental company curating design-led chairs, tables, draped chandeliers, custom facades and staging for weddings and celebrations.',
-  owner: 'Kellie Roberts',
+  owner: 'Kailee Roberts',
   email: 'kailee@peakeventsbykrd.com', // from the 2025/26 lookbook; confirm before launch
   phone: '325.356.6341',
   phoneHref: '+13253566341',

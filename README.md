@@ -62,7 +62,6 @@ Optional: `scene: '<event photo name>'` shows a styled photo on hover, and `cust
 
 ## Before launch: open items
 
-- [ ] **Name spelling.** The owner is written as "Kellie Roberts" (about page). The lookbook email is `kailee@…`. Confirm the spelling.
 - [ ] **Quote inbox.** Turn on Netlify form email notifications, or set `formEndpoint`.
 - [ ] **Photos.** Images were captured from the lookbook PDF at web size. Replace them with the original high-res files, keeping the **same file names** in `assets/img/products/` and `assets/img/events/`. `tools/process_images.py` documents how each was made.
 - [ ] **Testimonials** are samples, marked "Sample review" on the site. Replace them in `testimonials` and remove `placeholder: true`.
